@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="app.js" type="module" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header--title">Hangman Game</div>
+      <div class="header--img">
+        <img src="img/ahorcado.png" alt="Ahorcado_img" />
+      </div>
+    </header>
+    <div class="main">
+      <p>Press start button and play c:</p>
+      <span id="alertText"></span>
+      <div class="main--container">
+        <div class="main--container__img">
+          <div class="main--container__img__div">
+            <img src="img/ahorcado_inside.jpg" alt="" />
+          </div>
+        </div>
+        <div class="main-game">
+          <div class="main-game__content" id="mainGameContent">
+            <div class="main-game-choose hide" id="mainGameChoose">
+              <label for="Userchoose">Choose one character...</label>
+              <input type="text" id="UserChoose" placeholder="UserChoose" />
+            </div>
+            <p id="wrongCharacter"></p>
+            <div class="show-words" id="showWords">
+              <ul id="showWordsList" class="showWordsList"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" id="goButton">Start Game</button>
+      <button type="button" class="hide inGameButton" id="restartButton">
+        Restart Game
+      </button>
+      <button type="button" class="hide inGameButton" id="checkButton">
+        Check
+      </button>
+    </div>
+  </body>
+</html>

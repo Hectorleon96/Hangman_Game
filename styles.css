@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 5px 5%;
+  background-color: azure;
+}
+
+.header--title {
+  font-size: 3rem;
+}
+
+.header--img img {
+  width: 130px;
+}
+
+.main {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.main-div {
+  margin-bottom: 10px;
+}
+
+.main h2 {
+  font-size: 2.5rem;
+}
+
+.main p {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.main h2,
+.main p {
+  margin: 0;
+}
+
+.main--container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.main--container__img {
+  display: flex;
+  align-items: center;
+}
+
+.main-game {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main-game__textUser {
+}
+
+.main-game__content {
+}
+
+.showWordsList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  list-style: none;
+}
+
+.hide {
+  display: none;
+}
