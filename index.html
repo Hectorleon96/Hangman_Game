@@ -16,8 +16,10 @@
       </div>
     </header>
     <div class="main">
-      <p>Press start button and play c:</p>
-      <span id="alertText"></span>
+      <span class="span-start">Press start button and play c:</span>
+      <span id="alertText"></span><br />
+      <span id="wrongCharacter"></span> <br />
+
       <div class="main--container">
         <div class="main--container__img">
           <div class="main--container__img__div">
@@ -30,20 +32,19 @@
               <label for="Userchoose">Choose one character...</label>
               <input type="text" id="UserChoose" placeholder="UserChoose" />
             </div>
-            <p id="wrongCharacter"></p>
             <div class="show-words" id="showWords">
               <ul id="showWordsList" class="showWordsList"></ul>
             </div>
+            <button type="button" id="goButton">Start Game</button>
+            <button type="button" class="hide inGameButton" id="restartButton">
+              Restart Game
+            </button>
+            <button type="button" class="hide inGameButton" id="checkButton">
+              Check
+            </button>
           </div>
         </div>
       </div>
-      <button type="button" id="goButton">Start Game</button>
-      <button type="button" class="hide inGameButton" id="restartButton">
-        Restart Game
-      </button>
-      <button type="button" class="hide inGameButton" id="checkButton">
-        Check
-      </button>
     </div>
   </body>
 </html>

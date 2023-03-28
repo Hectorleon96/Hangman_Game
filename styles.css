@@ -66,16 +66,14 @@ body {
   align-items: center;
 }
 
+.main--container__img img {
+  width: 300px;
+}
+
 .main-game {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.main-game__textUser {
-}
-
-.main-game__content {
 }
 
 .showWordsList {
@@ -84,11 +82,54 @@ body {
   justify-content: space-between;
   gap: 10px;
   padding: 10px;
-  font-size: 1.5rem;
-  text-decoration: underline;
+  font-size: 1.3rem;
   list-style: none;
 }
 
 .hide {
   display: none;
+}
+
+#alertText {
+  color: red;
+}
+
+@media (max-width: 700px) {
+  .main {
+    padding-top: 10px;
+  }
+  .main--container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .header {
+    flex-direction: column;
+  }
+  .header--title {
+    font-size: 1.8rem;
+  }
+
+  .header--img img {
+    display: none;
+  }
+
+  .main--container__img img {
+    width: 200px;
+  }
+
+  .span-start {
+    font-size: 1rem;
+  }
+
+  .showWordsList {
+    padding: 0 20px;
+  }
+
+  #alertText {
+    display: inline-block;
+    width: 100%;
+  }
 }
