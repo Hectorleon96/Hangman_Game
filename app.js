@@ -10,7 +10,7 @@ import {
 } from "./getElement.js";
 addEventListener("DOMContentLoaded", () => {
   let word = [];
-  let found;
+  let originalWord;
   let lifes = 6;
   async function getWord() {
     let response = await fetch(
@@ -22,15 +22,15 @@ addEventListener("DOMContentLoaded", () => {
       return;
     }
     document.querySelector(".span-start").classList.add("hide");
-    let data = await response.json();
-    found = data;
-    word = data[0].split("");
     MAIN_GAME_CHOOSE.classList.remove("hide");
     GO_BUTTON.classList.add("hide");
     for (let element of GAME_BUTTONS) {
       element.classList.remove("hide");
     }
 
+    let data = await response.json();
+    originalWord = data; // For use original word and no revert the split method.
+    word = data[0].split("");
     word.forEach(() => {
       let listItems = document.createElement("li");
       listItems.classList.add("listItems");
@@ -39,20 +39,23 @@ addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function checkWord() {
+  function checkCharacter() {
+    if (lifes === 0) {
+      gameStatus("gameOver", `¡You lost! The word is: ' ${originalWord}' `);
+      USER_CHOOSE.value = "";
+      return;
+    }
+
     if (USER_CHOOSE.value === "") {
       gameStatus("error", "Please type any character for continue...");
       return;
     }
 
     if (!word.includes(USER_CHOOSE.value)) {
-      lifes = lifes - 1;
-      if (lifes === 0) {
-        gameStatus("gameOver", `¡You lost! The word is: ' ${found}' `);
-        USER_CHOOSE.value = "";
-        return;
-      }
-      gameStatus("wrongWord", `Wrong character, you have ${lifes} intents...`);
+      gameStatus(
+        "wrongCharacter",
+        `Wrong character, you have ${lifes} intents...`
+      );
       USER_CHOOSE.value = "";
       return;
     }
@@ -61,14 +64,16 @@ addEventListener("DOMContentLoaded", () => {
 
   function showCharacter(character) {
     let position = word.indexOf(character);
-    word.splice(position, 1, "_");
-    USER_CHOOSE.value = "";
+    word.splice(position, 1, "_"); // To found two or more same characters.
     let render = document.querySelectorAll(".listItems");
     render[position].textContent = character;
+    USER_CHOOSE.value = "";
 
     let checkWin = word.every(function (element) {
+      // If are characters are founded.
       return element === "_";
     });
+
     if (checkWin) {
       gameStatus("youWin", "Press restart and play again c:");
     }
@@ -92,7 +97,8 @@ addEventListener("DOMContentLoaded", () => {
         }, 2000);
         break;
 
-      case "wrongWord":
+      case "wrongCharacter":
+        lifes = lifes - 1;
         WRONG_CHARACTER.textContent = message;
         break;
 
@@ -113,6 +119,6 @@ addEventListener("DOMContentLoaded", () => {
   }
 
   GAME_BUTTONS[0].addEventListener("click", restartGame);
-  GAME_BUTTONS[1].addEventListener("click", checkWord);
+  GAME_BUTTONS[1].addEventListener("click", checkCharacter);
   GO_BUTTON.addEventListener("click", getWord);
 });
